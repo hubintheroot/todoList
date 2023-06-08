@@ -60,7 +60,7 @@ let todos = loadStorage() // todo를 담을 배열
 createTodoList();
 input_todo.focus();
 
-input_todo.addEventListener('keyup', e => { // 엔터키를 누를 때 이벤트 발생
+input_todo.addEventListener('keydown', e => { // 엔터키를 누를 때 이벤트 발생
     if (e.key === 'Enter') {
         addTodo();
     }
