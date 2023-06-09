@@ -62,9 +62,9 @@ function refreshProgressBar(){
     let progress = 0;
     todos.forEach( todo => todo.checked ? progress++ : 0);
     let percentage = Math.round((progress / total) * 100);
-    percentage = percentage? percentage:0;
+    percentage = percentage? percentage+"%":"";
     todo_percentage.innerHTML = percentage;
-    progress_bar.style.width = percentage+'%';
+    progress_bar.style.width = percentage;
 }
 
 const input_todo = document.querySelector('.input-todo');

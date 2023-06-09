@@ -31,21 +31,18 @@
     background-color: #fff;
     border: 1px solid lightgray;
     border-radius: 12px;
-    text-align: center;
 }
 .todo-percentage{
-    position: absolute;
-}
-.todo-percentage::after{
-    content: "%";
+    color: #3B613B;
 }
 .progress-bar{
     float: left;
+    text-align: center;
     width: 0%;
     height: 21px;
     background-color: lightgreen;
     border-radius: 12px;
-    transition: width 1s;
+    transition: width 0.8s;
 }
 .todo-add-container{
     margin-bottom: -5px;
