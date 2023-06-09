@@ -26,8 +26,26 @@
 .todo-title-container{
     margin: 20px 0 5px;
 }
-.todo-subtitle-container{
-    margin-bottom: 15px;
+.todo-percentage-container{
+    margin: 0 30px 15px 30px;
+    background-color: #babac0;
+    border: 1px solid lightgray;
+    border-radius: 12px;
+    text-align: center;
+}
+.todo-percentage{
+    position: absolute;
+}
+.todo-percentage::after{
+    content: "%";
+}
+.progress-bar{
+    float: left;
+    width: 0%;
+    height: 21px;
+    background-color: lightgreen;
+    border-radius: 12px;
+    transition: width 1s;
 }
 .todo-add-container{
     margin-bottom: -5px;

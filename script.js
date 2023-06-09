@@ -6,6 +6,7 @@ function addTodo(){
     todos.push({'text': input_todo.value, 'checked': false});
     saveData();
     createTodoList();
+    refreshProgressBar();
     input_todo.value = '';
 }
 function saveData(){ // object 형태로 배열에 추가하고 
@@ -21,7 +22,9 @@ function createTodoList(){
         const span = document.createElement('span');
         const button = document.createElement('button');
         
-        if (todo.checked) span.classList.add('checked');
+        if (todo.checked) {
+            span.classList.add('checked');
+        }
         li.classList.add('flex', 'horizontal-between', 'vertical-center', 'li-spacing');
         span.classList.add('hover-pointer', 'test-class');
         button.className = 'del-btn';
@@ -34,16 +37,19 @@ function createTodoList(){
                 todo.checked = true;
                 span.classList.add('checked');
                 saveData();
+                refreshProgressBar();
             }else{
                 todo.checked = false;
                 span.classList.remove('checked');
                 saveData();
+                refreshProgressBar();
             }
         });
         button.addEventListener('click', () => { // todo 삭제
             todos.splice(index, 1);
             saveData();
             createTodoList();
+            refreshProgressBar();
         });
         
         li.appendChild(span);
@@ -51,13 +57,24 @@ function createTodoList(){
         todo_list_container.appendChild(li);
     });
 }
+function refreshProgressBar(){
+    const total = todos.length;
+    let progress = 0;
+    todos.forEach( todo => todo.checked ? progress++ : 0);
+    let percentage = Math.round((progress / total) * 100);
+    todo_percentage.innerHTML = percentage;
+    progress_bar.style.width = percentage+'%';
+}
 
 const input_todo = document.querySelector('.input-todo');
 const add_todo_button = document.querySelector('.btn-add-todo');
 const todo_list_container = document.querySelector('.todo-list-container');
+const progress_bar = document.querySelector('.progress-bar');
+const todo_percentage = document.querySelector('.todo-percentage')
 const storage = window.localStorage;
 let todos = loadStorage() // todo를 담을 배열
 createTodoList();
+refreshProgressBar();
 input_todo.focus();
 
 input_todo.addEventListener('keydown', e => { // 엔터키를 누를 때 이벤트 발생
