@@ -37,13 +37,12 @@ function createTodoList(){
                 todo.checked = true;
                 span.classList.add('checked');
                 saveData();
-                refreshProgressBar();
             }else{
                 todo.checked = false;
                 span.classList.remove('checked');
                 saveData();
-                refreshProgressBar();
             }
+            refreshProgressBar();
         });
         button.addEventListener('click', () => { // todo 삭제
             todos.splice(index, 1);

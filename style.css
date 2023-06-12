@@ -129,3 +129,10 @@
 .hover-pointer{
     cursor: pointer;
 }
+
+@media only screen and (max-width:420px){
+    /* 모바일 대응용 */
+    * { /* 모바일 환경에서 input box 클릭 시 확대되는 문제를 해결하기 위해 모든 글자 크기 16px */
+        font-size: 16px;
+    }
+}
