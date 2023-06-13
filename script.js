@@ -34,14 +34,12 @@ function createTodoList(){
 
         span.addEventListener('click', () => {
             if (span.getAttribute('class').split(' ').length === 2){
-                todo.checked = true;
                 span.classList.add('checked');
-                saveData();
             }else{
-                todo.checked = false;
                 span.classList.remove('checked');
-                saveData();
             }
+            todo.checked = !todo.checked;
+            saveData();
             refreshProgressBar();
         });
         button.addEventListener('click', () => { // todo 삭제
@@ -72,7 +70,7 @@ const todo_list_container = document.querySelector('.todo-list-container');
 const progress_bar = document.querySelector('.progress-bar');
 const todo_percentage = document.querySelector('.todo-percentage')
 const storage = window.localStorage;
-let todos = loadStorage() // todo를 담을 배열
+const todos = loadStorage() // todo를 담을 배열
 createTodoList();
 refreshProgressBar();
 input_todo.focus();
